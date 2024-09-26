@@ -247,7 +247,6 @@ const SketchRule = React.forwardRef<SketchRulerMethods, SketchRulerProps>(
     }, [isShowReferLine])
 
     useEffect(() => {
-      initPanzoom()
       if (!selfHandle) {
         document.addEventListener('wheel', handleWheel, { passive: false })
         document.addEventListener('keydown', handleSpaceKeyDown)
@@ -283,7 +282,7 @@ const SketchRule = React.forwardRef<SketchRulerMethods, SketchRulerProps>(
       <div className="StyledRuler" id="sketch-ruler">
         {btnSlot}
         <div className={'canvasedit-parent ' + cursorClass} style={rectStyle}>
-          <div className={'canvasedit ' + cursorClass}>{defaultSlot}</div>
+          {defaultSlot}
         </div>
         {showRuler && (
           <RulerWrapper
