@@ -231,7 +231,9 @@ const DemoComponent = () => {
           className={`wrapper ${state.isBlack ? 'blackwrapper' : 'whitewrapper'}`}
         >
           <SketchRule
-            scale={state.scale}
+            zoomLevel={1}
+            offsetX={-100}
+            offsetY={-100}
             lockLine={lockLine}
             thick={state.thick}
             width={rectWidth}
@@ -243,11 +245,9 @@ const DemoComponent = () => {
             showShadowText={state.showShadowText}
             canvasWidth={canvasWidth}
             canvasHeight={canvasHeight}
-            panzoomOption={panzoomOption}
             ref={sketchruleRef}
             isShowReferLine={state.isShowReferLine}
             onHandleCornerClick={handleCornerClick}
-            updateScale={updateScale}
             handleLine={handleLine}
             lines={state.lines}
           >

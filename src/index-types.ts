@@ -45,7 +45,9 @@ export interface SketchRulerProps {
   showRuler?: boolean
   eyeIcon?: string
   closeEyeIcon?: string
-  scale?: number
+  zoomLevel: number,
+  offsetX: number,
+  offsetY: number,
   rate?: number
   thick?: number
   palette?: PaletteType
@@ -63,11 +65,7 @@ export interface SketchRulerProps {
   snapThreshold?: number
   gridRatio?: number
   lockLine?: boolean
-  selfHandle?: boolean
-  panzoomOption?: object // 需要具体类型，这里假设为object
   children: React.ReactNode
-  updateScale?: (props: number) => void
-  onZoomChange?: (props: PanzoomEventDetail) => void
   onHandleCornerClick?: (props: boolean) => void
   handleLine?: (props: LineType) => void
 }
