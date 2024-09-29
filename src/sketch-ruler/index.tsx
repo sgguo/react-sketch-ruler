@@ -175,7 +175,7 @@ const SketchRule = React.forwardRef<SketchRulerMethods, SketchRulerProps>(
       [null, null] // 初始化 acc 为数组
     )
     return (
-      <div className="StyledRuler" id="sketch-ruler">
+      <div className="StyledRuler" id="sketch-ruler" ref={ref}>
         {btnSlot}
         <div className={`canvasedit-parent ${cursorClass}`} style={rectStyle}>
           {defaultSlot}
