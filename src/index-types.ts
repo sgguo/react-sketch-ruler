@@ -1,4 +1,3 @@
-import type { PanzoomObject, PanzoomEventDetail } from 'simple-panzoom'
 import { MutableRefObject } from 'react'
 export interface PaletteType {
   bgColor?: string
@@ -29,7 +28,7 @@ export interface FinalPaletteType {
   borderColor: string
 }
 
-export  interface ShadowType {
+export interface ShadowType {
   x: number
   y: number
   width: number
@@ -45,9 +44,9 @@ export interface SketchRulerProps {
   showRuler?: boolean
   eyeIcon?: string
   closeEyeIcon?: string
-  zoomLevel: number,
-  offsetX: number,
-  offsetY: number,
+  zoomLevel: number
+  offsetX: number
+  offsetY: number
   rate?: number
   thick?: number
   palette?: PaletteType
@@ -135,5 +134,5 @@ export interface SketchRulerMethods {
   zoomIn: () => void
   zoomOut: () => void
   initPanzoom: () => void
-  panzoomInstance: MutableRefObject<PanzoomObject | null>
+  panzoomInstance: MutableRefObject<any>
 }
