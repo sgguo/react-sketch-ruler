@@ -26,7 +26,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "release": "release-it"
+    "release": "release-it",
+    "clean": "rm -r lib"
   },
   "devDependencies": {
     "less": "^3.11.1",
