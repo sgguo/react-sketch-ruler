@@ -92,13 +92,15 @@ const SketchRule = React.forwardRef<SketchRulerMethods, SketchRulerProps>(
 
     const cornerStyle = useMemo(() => {
       return {
-        backgroundImage: showReferLine
-          ? `url(${eyeIcon || eye64})`
-          : `url(${closeEyeIcon || closeEye64})`,
         width: `${thick}px`,
         height: `${thick}px`,
         borderRight: `1px solid ${paletteConfig.borderColor}`,
-        borderBottom: `1px solid ${paletteConfig.borderColor}`
+        borderBottom: `1px solid ${paletteConfig.borderColor}`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: `${paletteConfig.fontColor}`,
+        backgroundColor: `${paletteConfig.bgColor}`
       }
     }, [showReferLine, eyeIcon, closeEyeIcon, paletteConfig])
 
@@ -109,7 +111,7 @@ const SketchRule = React.forwardRef<SketchRulerMethods, SketchRulerProps>(
         left: thick + 'px',
         top: thick + 'px',
         width: rectWidth + 'px',
-        height: rectHeight + 'px',
+        height: rectHeight + 'px'
         // overflow: 'auto'
       }
     }, [rectHeight, rectWidth, paletteConfig])
@@ -207,7 +209,11 @@ const SketchRule = React.forwardRef<SketchRulerMethods, SketchRulerProps>(
             vertical={true}
           />
         )}
-        {showRuler && <a className="corner" style={cornerStyle} onClick={handleCornerClick} />}
+        {showRuler && (
+          <a className="corner" style={cornerStyle} onClick={handleCornerClick}>
+            {showReferLine ? eyeIcon : closeEyeIcon}
+          </a>
+        )}
       </div>
     )
   }
