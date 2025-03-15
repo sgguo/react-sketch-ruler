@@ -82,6 +82,7 @@ export const drawCanvasRuler = (
   const startValue10 = Math.floor(start / gridSize10) * gridSize10
   const offsetX10 = ((startValue10 - start) / gridSize10) * gridPixel10 // 长间隔起点刻度距离ctx原点(start)的px距离
   const endValue = start + Math.ceil((isHorizontal ? width : height) / scale) // 终点刻度
+  const _endValue = Math.ceil((isHorizontal ? width : height) / scale)
   // 2. 画阴影
   if (selectLength) {
     const shadowX = (selectStart - start) * scale // 阴影起点坐标
@@ -125,16 +126,20 @@ export const drawCanvasRuler = (
   ctx.strokeStyle = longfgColor
 
   // 绘制长间隔和文字
-  for (let value = startValue10, count = 0; value < endValue; value += gridSize10, count++) {
+  for (
+    let value = startValue10, count = 0;
+    value < _endValue + gridPixel10;
+    value += gridSize10, count++
+  ) {
     const x = offsetX10 + count * gridPixel10 + 0.5 // prevent canvas 1px line blurry
-    if ((value - gridSize10 < endNum && value > endNum) || value == endNum) {
+    if ((value - gridSize10 < _endValue && value > _endValue) || value == _endValue) {
       // 如果尾数画最后一个刻度
-      const xl = offsetX10 + count * gridPixel10 + 0.5 + (endNum - value) * scale
-      setLast(xl, endNum, width, height, ctx, isHorizontal)
+      const xl = offsetX10 + count * gridPixel10 + 0.5 + (_endValue - value) * scale
+      setLast(xl, _endValue, width, height, ctx, isHorizontal)
       return
     }
 
-    if (value >= 0 && value <= endNum) {
+    if (value >= 0 && value <= endNum + startValue10) {
       if (value == 0) {
         if (isHorizontal) {
           ctx.moveTo(x, 0)
@@ -166,7 +171,7 @@ export const drawCanvasRuler = (
       }
 
       // 如果最后一个大刻度挨着最后一个刻度, 不画文字
-      if (endNum - value > gridSize10 / 2) {
+      if (endNum + startValue10 - value > gridSize10 / 2) {
         if (
           !showShadowText ||
           selectLength == 0 ||
