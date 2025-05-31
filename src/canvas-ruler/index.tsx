@@ -77,7 +77,7 @@ const CanvasRuler = ({
       cursor: vertical ? 'ew-resize' : 'ns-resize',
       [vertical ? 'borderRight' : 'borderBottom']: `1px solid ${palette.borderColor || '#eeeeef'}`
     }
-  }, [vertical, palette.borderColor])
+  }, [vertical, palette.borderColor, width, height])
 
   const handleDragStart = (e: MouseEvent<HTMLCanvasElement>) => onDragStart(e)
   return (
