@@ -110,11 +110,11 @@ const SketchRule = React.forwardRef<SketchRulerMethods, SketchRulerProps>(
         background: paletteConfig.bgColor,
         left: thick + 'px',
         top: thick + 'px',
-        width: rectWidth + 'px',
-        height: rectHeight + 'px'
+        width: rectWidth > canvasWidth ? rectWidth : canvasWidth + 'px',
+        height: rectHeight > canvasHeight ? rectHeight : canvasHeight + 'px'
         // overflow: 'auto'
       }
-    }, [rectHeight, rectWidth, paletteConfig])
+    }, [rectHeight, rectWidth, canvasWidth, canvasHeight, paletteConfig])
 
     // const handleSpaceKeyDown = (e: KeyboardEvent) => {
     //   if (e.key === ' ') {
