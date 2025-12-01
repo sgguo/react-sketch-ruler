@@ -87,7 +87,7 @@ export default function useLine(props: Props, vertical: boolean) {
 
   const checkBoundary = (value: number) => {
     const maxOffset = vertical ? props.canvasHeight : props.canvasWidth
-    return value < 0 || value > maxOffset
+    return value < 0 || value * props.rate > maxOffset
   }
 
   const labelContent = checkBoundary(startValue)
