@@ -12,6 +12,7 @@ interface Props {
   rate: number
   value?: number
   index?: number
+  offset?: number
   handleLine?: (props: LineType) => void
 }
 
@@ -86,8 +87,10 @@ export default function useLine(props: Props, vertical: boolean) {
   }
 
   const checkBoundary = (value: number) => {
-    const maxOffset = vertical ? props.canvasHeight : props.canvasWidth
-    return value < 0 || value * props.rate > maxOffset
+    const { canvasHeight, canvasWidth, offset, scale } = props
+    // update boundary check to consider offset when determining maxOffset
+    const maxOffset = ((vertical ? canvasHeight : canvasWidth) + (offset ?? 0)) / scale
+    return value < 0 || value > maxOffset
   }
 
   const labelContent = checkBoundary(startValue)

@@ -42,6 +42,7 @@ const RulerComponent = ({
         snapThreshold,
         lockLine: isLockLine,
         rate,
+        offset: startOther,
         handleLine
       },
       !vertical
@@ -111,6 +112,7 @@ const RulerComponent = ({
               value={Math.floor(v)}
               scale={scale}
               start={start}
+              startOther={startOther}
               canvasWidth={canvasWidth}
               snapThreshold={snapThreshold}
               snapsObj={snapsObj}

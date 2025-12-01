@@ -8,6 +8,7 @@ const LineComponent = ({
   palette,
   index,
   start,
+  startOther,
   vertical,
   value,
   canvasWidth,
@@ -35,6 +36,7 @@ const LineComponent = ({
         index,
         value,
         rate,
+        offset: startOther,
         handleLine
       },
       vertical

@@ -97,6 +97,7 @@ export interface RulerWrapperProps {
 export interface LineProps {
   index: number
   start: number
+  startOther: number
   vertical: boolean
   canvasWidth: number
   canvasHeight: number
