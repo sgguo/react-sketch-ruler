@@ -93,7 +93,11 @@ const LineComponent = ({
       hidden={!showLine}
     >
       <div className="action" style={actionStyle}>
-        {showLabel && <span className="value">{labelContent}</span>}
+        {showLabel && (
+          <span className="value" style={{ lineHeight: 1 }}>
+            {labelContent}
+          </span>
+        )}
       </div>
     </div>
   )
